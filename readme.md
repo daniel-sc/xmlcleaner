@@ -3,9 +3,13 @@ Cleans XML files (in place), by removing all elements (and their children), that
 
 Formatting of the files is kept/unchanged.
 
+## Build
+
+	mvn clean install
+
 ## Usage
 
-	Usage: <main class> [options] files/directories
+	Usage: java -jar xmlcleaner-*-jar-with-dependencies.jar [options] files/directories
 	  Options:
 	    --attribute, -a
 	      XML attribute name
@@ -14,7 +18,6 @@ Formatting of the files is kept/unchanged.
 	    --matcher, -m
 	      Attribute value matcher (regex)
 	      Default: 1[45]\.\d+(?:\.\d+)?d.*
-
 
 
 ## Known issues
