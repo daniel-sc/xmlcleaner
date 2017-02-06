@@ -12,12 +12,17 @@ Formatting of the files is kept/unchanged.
 	Usage: java -jar xmlcleaner-*-jar-with-dependencies.jar [options] files/directories
 	  Options:
 	    --attribute, -a
-	      XML attribute name
+	      XML attribute name.
 	      Default: rev
+	    --attribute-only, -ao
+	      Remove only matched attribute (instead of complete node/element).
+	      Default: false
 	    --help
+	      Display usage.
 	    --matcher, -m
-	      Attribute value matcher (regex)
+	      Attribute value matcher (regex).
 	      Default: 1[45]\.\d+(?:\.\d+)?d.*
+
 
 
 ## Known issues
