@@ -1,9 +1,11 @@
 package com.xmlcleaner;
 
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.nio.charset.Charset;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -50,8 +52,9 @@ public class XmlCleaner {
 		Document doc = XMLParser.parse(file);
 		boolean changed = cleanDoc(doc);
 		if (changed) {
-			LOG.info("Updating: " + file);
-			Writer fileWriter = new FileWriter(file);
+			Charset charset = doc.getEncoding() != null ? Charset.forName(doc.getEncoding()) : Charset.defaultCharset();
+			Writer fileWriter = new OutputStreamWriter(new FileOutputStream(file), charset);
+			LOG.info("Updating: " + file + " (charset=" + charset + ")");
 			try (XMLWriter writer = new XMLWriter(fileWriter)) {
 				doc.toXML(writer);
 			}
